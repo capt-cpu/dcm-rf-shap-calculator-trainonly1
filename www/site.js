@@ -170,14 +170,14 @@
     const pill = byId("classification-pill");
     pill.className = `classification-pill ${above ? "above" : "below"}`;
     pill.textContent = above
-      ? "达到预设阈值：模型分类为不良恢复"
-      : "低于预设阈值：模型分类为有利恢复";
+      ? "达到预设阈值：模型分类为不良预后"
+      : "低于预设阈值：模型分类为预后良好";
     byId("risk-heading").textContent = above
       ? "建议加强术前风险沟通与术后随访"
       : "预测风险低于研究分类阈值";
     byId("risk-description").textContent =
       `模型概率为 ${(100 * probability).toFixed(1)}%，研究预设分类阈值为 ${(100 * model.threshold).toFixed(0)}%。` +
-      `计算用时 ${(elapsedMs / 1000).toFixed(2)}秒；该概率用于风险分层，不代表患者必然发生或不发生不良恢复。`;
+      `计算用时 ${(elapsedMs / 1000).toFixed(2)}秒；该概率用于风险分层，不代表患者必然发生或不发生不良预后。`;
 
     byId("baseline-value").textContent = `${(100 * shapResult.baseline).toFixed(1)}%`;
     byId("shap-sum-value").textContent = `${shapResult.shapSum >= 0 ? "+" : ""}${(100 * shapResult.shapSum).toFixed(1)}百分点`;
@@ -263,7 +263,7 @@
     ctx.fillText("个体RF–SHAP解释", 110, 105);
     ctx.fillStyle = "#64748b";
     ctx.font = '30px "Microsoft YaHei", sans-serif';
-    ctx.fillText("正值推高不良恢复风险，负值降低风险", 110, 158);
+    ctx.fillText("正值推高不良预后风险，负值降低风险", 110, 158);
 
     const rows = lastResult.rows;
     const maxAbs = Math.max(...rows.map((row) => Math.abs(row.shap)), 0.000001);
