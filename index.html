@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="基于锁定随机森林模型的DCM术后1年不良恢复风险预测与患者级SHAP解释工具。">
+  <meta name="description" content="基于随机森林模型的DCM术后1年预后风险预测与患者级SHAP解释工具。">
   <meta name="theme-color" content="#0e2a47">
   <meta property="og:title" content="DCM术后恢复 RF–SHAP预测工具">
-  <meta property="og:description" content="7项术前指标、锁定随机森林、浏览器端精确SHAP解释。">
+  <meta property="og:description" content="7项术前指标、随机森林模型、浏览器端精确SHAP解释。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://capt-cpu.github.io/dcm-rf-shap-calculator/">
   <meta property="og:image" content="https://capt-cpu.github.io/dcm-rf-shap-calculator/og.png">
@@ -20,14 +20,14 @@
       <div class="eyebrow"><span class="eyebrow-dot"></span>LOCKED RANDOM FOREST · EXACT INDIVIDUAL SHAP</div>
       <div class="hero-title-row">
         <div>
-          <h1>DCM术后1年不良恢复风险预测</h1>
-          <p>输入7项常规术前指标，获得锁定随机森林的个体风险概率，并查看每项指标如何推高或降低本次预测。</p>
+          <h1>DCM术后1年预后风险预测</h1>
+          <p>输入7项常规术前指标，获得随机森林模型的个体风险概率，并查看每项指标如何推高或降低本次预测。</p>
         </div>
       </div>
       <div class="hero-chips" aria-label="模型信息">
         <span>开发队列 n=601</span>
-        <span>前瞻性时间验证 n=183</span>
-        <span>前瞻验证 AUC=0.840</span>
+        <span>时间验证 n=183</span>
+        <span>时间验证 AUC=0.840</span>
         <span>300棵决策树</span>
       </div>
     </div>
@@ -88,8 +88,8 @@
 
         <div id="risk-content" hidden>
           <div class="risk-layout">
-            <div id="risk-ring" class="risk-ring" aria-label="不良恢复预测概率">
-              <div class="risk-ring-inner"><span id="risk-number" class="risk-number">—</span><span class="risk-caption">不良恢复概率</span></div>
+            <div id="risk-ring" class="risk-ring" aria-label="不良预后预测概率">
+              <div class="risk-ring-inner"><span id="risk-number" class="risk-number">—</span><span class="risk-caption">不良预后概率</span></div>
             </div>
             <div class="risk-copy">
               <div id="classification-pill" class="classification-pill"></div>
@@ -111,7 +111,7 @@
         <div class="panel-heading heading-with-actions">
           <div class="heading-main">
             <div class="step-badge">03</div>
-        <div><h2 id="shap-title">个体SHAP解释</h2><p>正值推高不良恢复风险，负值降低风险；使用隐私保护合成参考分布</p></div>
+        <div><h2 id="shap-title">个体SHAP解释</h2><p>正值推高不良预后风险，负值降低风险</p></div>
           </div>
           <div class="download-actions">
             <button id="download-png" class="download-btn" type="button" disabled>下载PNG</button>
@@ -133,9 +133,9 @@
       <section class="panel-card model-note" aria-labelledby="interpret-title">
         <h2 id="interpret-title">如何解读</h2>
         <div class="note-grid">
-          <div><h3>风险概率</h3><p>表示模型估计患者术后1年未达到相应MCID的概率。0.50为研究预设分类阈值，不是手术指征阈值。</p></div>
-          <div><h3>SHAP贡献</h3><p>显示各指标对本次预测的方向和幅度。为保护患者隐私，公开网页采用基于训练队列分布生成的合成参考样本计算SHAP。更换参考背景可能改变SHAP基线及各指标贡献，但不会改变RF预测概率。</p></div>
-          <div><h3>适用边界</h3><p>模型完成了同中心前瞻性时间验证，但尚缺少地理外部验证和临床影响试验，仅供科研与辅助风险沟通。</p></div>
+          <div><h3>风险概率</h3><p>表示模型估计患者术后1年未达到相应MCID的概率。0.50为研究预设分类阈值。</p></div>
+          <div><h3>SHAP贡献</h3><p>显示各指标对本次预测的方向和幅度。为保护患者隐私，公开网页采用基于训练队列分布生成的合成参考样本计算SHAP。</p></div>
+          <div><h3>适用边界</h3><p>模型完成了同中心时间验证，但尚缺少地理外部验证和临床影响试验，仅供科研与辅助风险沟通。</p></div>
         </div>
       </section>
 
